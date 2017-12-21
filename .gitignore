@@ -1,6 +1,15 @@
 # Node
 node_modules/
 
+# Webstorm
+.idea/
+
+# Netbeans
+/java-client/target/
+
+# Build
+dist/
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db

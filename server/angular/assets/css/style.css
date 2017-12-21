@@ -1,0 +1,106 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    line-height: 25px;
+    font-size: 17px;
+    color: #404040;
+}
+
+a, a:hover, a:active, a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1, h2, h3, h4 {
+    line-height: 1.3em;
+    font-family: 'Raleway', sans-serif;
+}
+
+h1 {
+    font-size: 3.5em;
+}
+
+h2 {
+    font-size: 2.5em;
+}
+
+h3 {
+    font-size: 1.6em;
+}
+
+h4 {
+    font-size: 1.1em;
+    font-weight: 400;
+}
+
+.bold {
+    font-weight: 500;
+}
+
+#loading_icon {
+    position: fixed;
+    width: 200px;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -100px;
+}
+
+.fp-scrollable {white-space:nowrap;}
+.fp-scrollable > * {white-space:normal;}
+
+.fp-scrollable:before,
+.fp-scrollable >* {display:inline-block; vertical-align:middle;}
+
+.fp-scrollable:before {content:"";  height:100%;}
+
+.fp-scrollable {word-spacing:-.25em;}
+.fp-scrollable > * {word-spacing:normal;}
+
+.fp-scroller {
+    width: 100%;
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeout {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadein-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes fadein-right {
+    from {
+        opacity: 0;
+        transform: translateX(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
