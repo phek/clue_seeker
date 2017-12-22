@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const clientHandler = require('../handlers/ClientHandler');
 const authHandler = require('../handlers/AuthHandler');
+const api = require('../handlers/ApiHandler');
 const MongoClient = require('mongodb').MongoClient;
 const config = require('../configs/auth');
-const jwt = require('jsonwebtoken');
 
 const url_DB = config.database;
 
@@ -17,16 +17,7 @@ router.post('/authenticate', (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
     let platform = req.body.platform;
-    let token = null;
-    if (username === 'test' && password === 'test') {
-        const payload = {
-            username: username,
-            platform: platform
-        };
-        token = jwt.sign(payload, config.secret, {
-            expiresIn: "1d"
-        });
-    }
+    let token = api.getToken(username, password, platform);
     return res.status(200).json({token: token});
 });
 

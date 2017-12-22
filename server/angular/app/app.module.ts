@@ -5,6 +5,7 @@ import {HttpModule} from '@angular/http';
 import {RouterModule} from '@angular/router';
 
 import {AuthenticationService} from './_services/AuthenticationService';
+import {SocketService} from './_services/SocketService';
 import {AuthGuard} from './_guards/auth.guard'
 
 import {AppComponent} from './app.component';
@@ -30,7 +31,8 @@ import {ApiService} from "./_services/ApiService";
     providers: [
         AuthGuard,
         AuthenticationService,
-        ApiService
+        ApiService,
+        SocketService
     ],
     bootstrap: [AppComponent]
 })

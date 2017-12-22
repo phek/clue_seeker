@@ -1,18 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs';
-import * as io from 'socket.io-client';
 import 'rxjs/add/operator/map'
+import {SocketService} from "./SocketService";
 
 @Injectable()
 export class AuthenticationService {
 
-    public token: string;
-    public socket: any;
-
-    constructor(private http: Http) {
-        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        this.token = currentUser && currentUser.token;
+    constructor(private socketService: SocketService, private http: Http) {
     }
 
     login(username: string, password: string): Observable<boolean> {
@@ -20,12 +15,9 @@ export class AuthenticationService {
             .map((response: Response) => {
                 let token = response.json() && response.json().token;
                 if (token) {
-                    this.token = token;
                     localStorage.setItem('currentUser', JSON.stringify({username: username, token: token}));
-                    if (this.socket == null) {
-                        this.connectSocket();
-                    } else {
-                        this.socket.emit('auth', this.token);
+                    if (!this.socketService.isActive()) {
+                        this.socketService.connectSocket();
                     }
                     return true;
                 } else {
@@ -35,29 +27,11 @@ export class AuthenticationService {
     }
 
     logout(): void {
-        this.token = null;
+        this.removeToken();
+        this.socketService.closeSocket();
+    }
+
+    removeToken(): void {
         localStorage.removeItem('currentUser');
-        this.closeSocket();
-    }
-
-    connectSocket(): void {
-        let self = this;
-        if (this.token != null && this.socket == null) {
-            self.socket = io('http://localhost:3000');
-            self.socket.on('connect', function() {
-                if (self.token) {
-                    self.socket.emit('auth', self.token);
-                } else {
-                    self.closeSocket();
-                }
-            });
-        }
-    }
-
-    closeSocket(): void {
-        if (this.socket != null) {
-            this.socket.close();
-            this.socket = null;
-        }
     }
 }

@@ -1,12 +1,15 @@
 const express = require('express');
 const app = express();
 const http = require('http').Server(app);
-const io = require('socket.io')(http);
 const path = require('path');
 const bodyParser = require('body-parser');
 const api = require('./routes/api');
 const routes = require('./routes/other');
 const socket = require('./handlers/SocketHandler');
+const io = require('socket.io')(http, {
+    pingInterval: 10000,
+    pingTimeout: 5000
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));

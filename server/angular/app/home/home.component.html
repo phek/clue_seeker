@@ -1,6 +1,11 @@
-<div>
+<div class="wrapper">
     <h1>Home</h1>
     <p>You're logged in with JWT!!</p>
-    <a [routerLink]="['/sockets']">Sockets</a>
-    <a [routerLink]="['/login']">Logout</a>
+    <br>
+    <div class="button" (click)="alertUsers('Listen up all users!')">Alert Users</div>
+    <div class="button"><a [routerLink]="['/sockets']">Sockets</a></div>
+    <div class="button"><a [routerLink]="['/login']">Logout</a></div>
+    <br>
+    <br>
+    <div id="alert_box"></div>
 </div>
