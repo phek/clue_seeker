@@ -8,10 +8,7 @@ let ClientHandler = module.exports = {
             return item.socket_id !== socket_id;
         });
     },
-    auth: function (socket_id, token, username, platform) {
+    find: function (socket_id) {
         let index = ClientHandler.clients.findIndex((item => item.socket_id === socket_id));
-        ClientHandler.clients[index].token = token;
-        ClientHandler.clients[index].username = username;
-        ClientHandler.clients[index].platform = platform;
     }
 };

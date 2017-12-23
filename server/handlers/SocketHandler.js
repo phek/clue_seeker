@@ -37,7 +37,8 @@ module.exports = {
             clientHandler.add({
                 socket_id: socket.id,
                 username: socket.decoded.username,
-                platform: socket.decoded.platform
+                platform: socket.decoded.platform,
+                admin: socket.decoded.admin
             });
 
             socket.on('disconnect', function () {

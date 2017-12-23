@@ -5,7 +5,3 @@ a, a:visited {
 a:hover {
     color: #222;
 }
-
-#alert_box {
-    display: none;
-}

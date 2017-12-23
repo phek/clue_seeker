@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const clientHandler = require('../handlers/ClientHandler');
 const authHandler = require('../handlers/AuthHandler');
 const api = require('../handlers/ApiHandler');
 const MongoClient = require('mongodb').MongoClient;
@@ -23,8 +22,8 @@ router.post('/authenticate', (req, res) => {
 
 router.get('/sockets', (req, res) => {
     authHandler.auth(req, res, function() {
-        res.status(200).json(clientHandler.clients);
-    });
+        res.status(200).json(api.getClients());
+    }, true);
 });
 
 router.get('/cv/get/experiences', (req, res) => {

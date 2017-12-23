@@ -1,10 +1,11 @@
-import {Injectable, OnDestroy} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import * as io from 'socket.io-client';
 import {Router} from "@angular/router";
 
 @Injectable()
-export class SocketService implements OnDestroy{
+export class SocketService {
 
+    public socketReady: EventEmitter<any> = new EventEmitter();
     public socket: any;
 
     constructor(private router: Router) {
@@ -19,7 +20,9 @@ export class SocketService implements OnDestroy{
                     token: token
                 }
             });
+            self.socketReady.emit(self.socket);
             self.socket.on('connect', function () {
+                console.log('CONNECTED');
 
                 self.socket.on('token_expired', function () {
                     self.removeToken();
@@ -28,9 +31,12 @@ export class SocketService implements OnDestroy{
                 });
 
                 self.socket.on('disconnect', function () {
-                    self.socket = null;
+                    console.log("DISCONNECTED");
                 });
             });
+            window.onbeforeunload = function () {
+                self.closeSocket();
+            };
         }
     }
 
@@ -60,9 +66,5 @@ export class SocketService implements OnDestroy{
     private getToken() {
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         return currentUser && currentUser.token;
-    }
-
-    ngOnDestroy(): void {
-        this.closeSocket();
     }
 }

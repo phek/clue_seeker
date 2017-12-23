@@ -58,6 +58,22 @@ h4 {
     color: #777;
 }
 
+.alert_box {
+    visibility: hidden;
+    width: 270px;
+    min-height: 120px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    border: 2px solid #333;
+    margin: 5px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+    font-weight: 500;
+}
+
 #loading_icon {
     position: fixed;
     width: 200px;
