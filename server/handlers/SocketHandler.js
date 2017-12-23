@@ -19,16 +19,20 @@ module.exports = {
                     jwt.verify(token, config.secret, function (err, decoded) {
                         if (err) {
                             console.log("Invalid token");
+                            socket.emit('invalid token');
+                            next(new Error('Invalid token'));
                         } else {
                             socket.decoded = decoded;
                             next();
                         }
                     });
                 } else {
-                    console.log("No token")
+                    console.log("No token");
+                    next(new Error('No token'));
                 }
             } else {
                 console.log("Invalid authentication");
+                next(new Error('Invalid authentication'));
             }
         });
 

@@ -20,20 +20,22 @@ export class SocketService {
                     token: token
                 }
             });
-            self.socketReady.emit(self.socket);
+
+            self.socket.on('error', function (err) {
+                self.removeToken();
+                self.closeSocket();
+                self.router.navigate(['/login']);
+            });
+
             self.socket.on('connect', function () {
                 console.log('CONNECTED');
-
-                self.socket.on('token_expired', function () {
-                    self.removeToken();
-                    self.closeSocket();
-                    self.router.navigate(['/login']);
-                });
+                self.socketReady.emit(self.socket);
 
                 self.socket.on('disconnect', function () {
                     console.log("DISCONNECTED");
                 });
             });
+
             window.onbeforeunload = function () {
                 self.closeSocket();
             };
