@@ -5,6 +5,6 @@ server/configs/auth.js
 
 It should contain the following content:  
 module.exports = {  
-    'secret': 'OUR_SECRET_HERE',  
-    'database': 'OUR_DATABASE_URL_HERE'  
+&nbsp;&nbsp;&nbsp;&nbsp;'secret': 'OUR_SECRET_HERE',  
+&nbsp;&nbsp;&nbsp;&nbsp;'database': 'OUR_DATABASE_URL_HERE'  
 };
