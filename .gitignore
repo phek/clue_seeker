@@ -62,10 +62,11 @@ Temporary Items
 .apdisk
 
 # directories from ue4
-sioclient/SocketIOPrep.sln
-sioclient/Intermediate
-sioclient/Binaries
-sioclient/Saved
+ue4_client/SocketIOPrep.sln
+ue4_client/Intermediate
+ue4_client/Binaries
+ue4_client/Saved
+
 *.VC.db
 *.opendb
 .vs
