@@ -4,12 +4,13 @@ const clientHandler = require('../handlers/ClientHandler');
 
 module.exports = {
     getToken: function (username, password, platform) {
-        if (username === 'test' && password === 'test') {
+        if (username === 'admin' && password === 'admin') {
             return jwt.sign({username: username, platform: platform, admin: true}, config.secret, {expiresIn: "1d"});
+        } else {
+            return jwt.sign({username: username, platform: platform, admin: false}, config.secret, {expiresIn: "1d"});
         }
-        return null;
     },
-    getClients: function() {
+    getClients: function () {
         return clientHandler.clients;
     }
 };

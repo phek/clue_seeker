@@ -38,6 +38,8 @@ module.exports = {
 
         io.on('connection', function (socket) {
             console.log('Socket connected');
+            io.emit('client connected', socket.decoded.username);
+
             clientHandler.add({
                 socket_id: socket.id,
                 username: socket.decoded.username,
@@ -47,6 +49,7 @@ module.exports = {
 
             socket.on('disconnect', function () {
                 clientHandler.remove(socket.id);
+                io.emit('client disconnected', socket.decoded.username);
                 console.log("Socket disconnected");
             });
 
@@ -55,10 +58,10 @@ module.exports = {
             });
 
             socket.on('chat message', function (msg) {
-                let combinedMsg = socket.id.substring(0, 4) + ': ' + msg;
-                io.emit('chat message', combinedMsg);
-                console.log('multicast: ' + combinedMsg);
+                io.emit('chat message', socket.decoded.username + ": " + msg);
+                console.log(socket.decoded.username + ": " + msg);
             });
+
         });
     }
 };

@@ -12,8 +12,8 @@ export class SocketService {
     }
 
     connectSocket(): void {
-        let self = this;
-        let token = this.getToken();
+        const self = this;
+        const token = this.getToken();
         if (token != null && this.socket == null) {
             self.socket = io('http://localhost:3000', {
                 query: {
@@ -32,7 +32,7 @@ export class SocketService {
                 self.socketReady.emit(self.socket);
 
                 self.socket.on('disconnect', function () {
-                    console.log("DISCONNECTED");
+                    console.log('DISCONNECTED');
                 });
             });
 
@@ -57,8 +57,8 @@ export class SocketService {
         this.socket.emit('alert', message);
     }
 
-    getSocket() {
-        return this.socket;
+    sendMessage(message): void {
+        this.socket.emit('chat message', message);
     }
 
     private removeToken() {
@@ -66,7 +66,7 @@ export class SocketService {
     }
 
     private getToken() {
-        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
         return currentUser && currentUser.token;
     }
 }

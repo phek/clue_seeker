@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ApiService} from "../_services/ApiService";
-import {Socket} from "../_models/socket";
+import {ApiService} from '../_services/ApiService';
+import {Socket} from '../_models/socket';
 
 @Component({
     selector: 'app-sockets',

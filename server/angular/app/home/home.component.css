@@ -5,3 +5,23 @@ a, a:visited {
 a:hover {
     color: #222;
 }
+
+#chat {
+    width: 500px;
+    height: 300px;
+    border: 1px solid #222222;
+    margin-top: 40px;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+#chat .message {
+    margin-bottom: 5px;
+}
+
+.message_input {
+    width: 500px;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #222;
+}

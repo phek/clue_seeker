@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs';
-import 'rxjs/add/operator/map'
-import {SocketService} from "./SocketService";
+import 'rxjs/add/operator/map';
+import {SocketService} from './SocketService';
 
 @Injectable()
 export class AuthenticationService {
@@ -11,9 +11,9 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string): Observable<boolean> {
-        return this.http.post('/api/authenticate', {username: username, password: password, platform: "web"})
+        return this.http.post('/api/authenticate', {username: username, password: password, platform: 'web'})
             .map((response: Response) => {
-                let token = response.json() && response.json().token;
+                const token = response.json() && response.json().token;
                 if (token) {
                     localStorage.setItem('currentUser', JSON.stringify({username: username, token: token}));
                     if (!this.socketService.isActive()) {

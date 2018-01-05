@@ -5,4 +5,8 @@
     <div class="button" (click)="alertUsers('Listen up all users!')">Alert Users</div>
     <div class="button"><a [routerLink]="['/sockets']">Sockets</a></div>
     <div class="button"><a [routerLink]="['/login']">Logout</a></div>
+    <div id="chat">
+        <div class="message" *ngFor="let message of messages">{{message}}</div>
+    </div>
+    <input class="message_input" (keyup.enter)="sendMessage($event)" placeholder="Enter a message">
 </div>

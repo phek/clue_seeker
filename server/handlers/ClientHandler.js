@@ -10,5 +10,6 @@ let ClientHandler = module.exports = {
     },
     find: function (socket_id) {
         let index = ClientHandler.clients.findIndex((item => item.socket_id === socket_id));
+        return ClientHandler.clients[index];
     }
 };
