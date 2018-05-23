@@ -1,5 +1,5 @@
 # clue_seeker
-This project origins from a [game concept](https://github.com/phek/clue_seeker/blob/master/concept.pdf) I have. The idea was to create a hacking game where you interact with the game from multiple platforms such as a Web browser, Java client, a Game client or even a Mobile application. The scope of the project was quite big and I was hoping to recruit a few more developers/designers to fullfill it. This did however not happen and I instead decided to create the core communication of the game.
+This project origins from a [game concept](https://github.com/phek/clue_seeker/blob/master/concept.pdf) I have. The idea was to create a hacking game where you interact with the game from multiple platforms such as a Web browser, Java client, Game client or even a Mobile application. The scope of the project was quite big and I was hoping to recruit a few more developers/designers to fullfill it. This did however not happen and I instead decided to create the core communication of the game.
 
 You can read a simple rapport of the project in the [project rapport](https://github.com/phek/clue_seeker/blob/master/project-rapport.pdf).
 
